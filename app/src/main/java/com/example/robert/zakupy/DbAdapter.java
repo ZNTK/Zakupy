@@ -114,7 +114,7 @@ public class DbAdapter {
         return db.insert("Product", null, newProductValues);
     }
 
-//    public boolean updateProduct(TodoTask task) {
+    //    public boolean updateProduct(TodoTask task) {
 //        long id = task.getId();
 //        String description = task.getDescription();
 //        boolean completed = task.isCompleted();
@@ -132,6 +132,11 @@ public class DbAdapter {
 //
     public boolean deleteProduct(int id){
         String where = "id" + "=" + id;
+        return db.delete("Product", where, null) > 0;
+    }
+
+    public boolean deleteProductTmp(int id){
+        String where = "id" + "!=" + id;
         return db.delete("Product", where, null) > 0;
     }
 

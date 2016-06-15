@@ -7,6 +7,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -31,6 +32,7 @@ public class ProductsActivity extends AppCompatActivity {
 
     public void refreshProductList(String orderBy)
     {
+        Log.d("GIT", "redjo baton!");
         listViewProducts.setAdapter(null);
         listViewProducts_DataBind(orderBy);
     }
@@ -61,16 +63,21 @@ public class ProductsActivity extends AppCompatActivity {
 
     public void radioGroupOrderBy_onClick(View view)
     {
+        Log.d("GIT", "redjo baton!");
         RadioButton radioButtonName = (RadioButton) findViewById(R.id.radioButtonName);
         RadioButton radioButtonCategory = (RadioButton) findViewById(R.id.radioButtonCategory);
 
-        if(radioButtonName.isSelected())
+        boolean x1 = radioButtonName.isChecked();
+        boolean x2 = radioButtonCategory.isChecked();
+
+
+        if(radioButtonName.isChecked())
         {
             refreshProductList("Name");
         }
-        if(radioButtonCategory.isSelected())
+        if(radioButtonCategory.isChecked())
         {
-            refreshProductList("Category");
+            refreshProductList("id_category");
         }
 
 

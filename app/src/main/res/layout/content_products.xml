@@ -22,28 +22,22 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:headerDividersEnabled="true"
-        android:layout_above="@+id/btnBack"
-        android:layout_below="@+id/radioGroupOrderBy" />
+        android:layout_below="@+id/radioGroupOrderBy"
+        android:layout_above="@+id/btnAddProduct" />
 
-    <Button
+    <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:padding="5dip"
         android:text="Nowy produkt"
         android:id="@+id/btnAddProduct"
-        android:layout_below="@+id/listViewProducts"
-        android:layout_toRightOf="@+id/btnBack"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Powrót"
-        android:id="@+id/btnBack"
-        android:layout_marginBottom="42dp"
+        android:src="@android:drawable/ic_input_add"
+        android:layout_marginBottom="80dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignRight="@+id/listViewProducts"
+        android:layout_alignEnd="@+id/listViewProducts" />
+
+
 
     <RadioGroup
         android:layout_width="wrap_content"
@@ -51,7 +45,8 @@
         android:id="@+id/radioGroupOrderBy"
         android:layout_centerHorizontal="true"
         android:orientation="horizontal"
-        android:onClick="radioGroupOrderBy_onClick">
+        android:onClick="radioGroupOrderBy_onClick"
+        >
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -60,17 +55,50 @@
             android:layout_toRightOf="@+id/btnBack"
             android:layout_toEndOf="@+id/btnBack"
             android:id="@+id/radioButtonName"
+            android:onClick="radioGroupOrderBy_onClick"
             />
 
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/radioButtonCategory"
             android:text="Kategoria"
             android:layout_alignTop="@+id/radioGroupOrderBy"
             android:layout_toRightOf="@+id/radioButton"
             android:layout_toEndOf="@+id/radioButtonCategory"
-            android:checked="false" />
+            android:checked="false"
+            android:onClick="radioGroupOrderBy_onClick"
+            />
     </RadioGroup>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText"
+        android:layout_below="@+id/listViewProducts"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_toLeftOf="@+id/editText2"
+        android:layout_toStartOf="@+id/editText2" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinner"
+
+        android:layout_below="@+id/listViewProducts"
+        android:layout_toLeftOf="@+id/btnAddProduct"
+        android:layout_toEndOf="@+id/radioGroupOrderBy"
+        android:layout_alignBottom="@+id/btnAddProduct"
+        android:layout_toRightOf="@+id/radioGroupOrderBy" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText2"
+        android:layout_below="@+id/listViewProducts"
+        android:layout_alignRight="@+id/radioGroupOrderBy"
+        android:layout_alignEnd="@+id/radioGroupOrderBy" />
 
 
 </RelativeLayout>

@@ -40,6 +40,7 @@ public class ProductAdapter extends ArrayAdapter<Product> {
         final Product product = getItem(position);
 
         TextView tvName = (TextView) convertView.findViewById(R.id.textViewName);
+        TextView tvUnit = (TextView) convertView.findViewById(R.id.textViewUnit);
         TextView tvCategory = (TextView) convertView.findViewById(R.id.textViewCategory);
         ImageButton btnDelete = (ImageButton) convertView.findViewById(R.id.buttonDelete);
         radioButtonCategory = (RadioButton) convertView.findViewById(R.id.radioButtonCategory);
@@ -59,6 +60,7 @@ public class ProductAdapter extends ArrayAdapter<Product> {
             tvCategory.setText(category.name);
         else tvCategory.setText("");
 
+        tvUnit.setText(product.unit);
 
         btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,12 +69,12 @@ public class ProductAdapter extends ArrayAdapter<Product> {
                 DbAdapter adapter = new DbAdapter(context);
                 adapter.open();
                 adapter.deleteProduct(product.id);
-               adapter.close();
+                adapter.close();
 
                 String orderBy = "Name";
-                radioButtonCategory = (RadioButton) v.findViewById(R.id.radioButtonCategory); // tutaj sie wywala po usunieciu
-                if(radioButtonCategory.isSelected())
-                    orderBy = "Category";
+                //     radioButtonCategory = (RadioButton) ((ProductsActivity) context).findViewById(R.id.radioButtonCategory); // tutaj sie wywala po usunieciu
+                //     if(radioButtonCategory.isSelected())
+                //         orderBy = "Category";
 
 
                 if(context instanceof ProductsActivity)
