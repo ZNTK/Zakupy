@@ -18,7 +18,11 @@
         <activity
             android:name=".ProductsActivity"
             android:label="@string/title_activity_products"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".ListActivity"></activity>
+        <activity android:name=".Pop"
+            android:theme="@style/AppTheme.PopupTheme"
+            ></activity>
     </application>
 
 </manifest>

@@ -45,6 +45,13 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void btnList_onClick(View view)
+    {
+        Intent i = new Intent(this, ListActivity.class);
+        startActivity(i);
+
+    }
+
 //    public void clearProductList()
 //    {
 //        listViewProducts.setAdapter(null);
