@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.robert.zakupy.ProductsActivity"
+    tools:showIn="@layout/activity_products">
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/listViewProducts"
+
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:headerDividersEnabled="true"
+        android:layout_above="@+id/btnBack"
+        android:layout_below="@+id/radioGroupOrderBy" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nowy produkt"
+        android:id="@+id/btnAddProduct"
+        android:layout_below="@+id/listViewProducts"
+        android:layout_toRightOf="@+id/btnBack"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Powrót"
+        android:id="@+id/btnBack"
+        android:layout_marginBottom="42dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/radioGroupOrderBy"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal"
+        android:onClick="radioGroupOrderBy_onClick">
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nazwa"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/btnBack"
+            android:layout_toEndOf="@+id/btnBack"
+            android:id="@+id/radioButtonName"
+            />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Kategoria"
+            android:layout_alignTop="@+id/radioGroupOrderBy"
+            android:layout_toRightOf="@+id/radioButton"
+            android:layout_toEndOf="@+id/radioButtonCategory"
+            android:checked="false" />
+    </RadioGroup>
+
+
+</RelativeLayout>

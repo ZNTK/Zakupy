@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Zakupy</string>
+    <string name="title_activity_products">ProductsActivity</string>
+</resources>
