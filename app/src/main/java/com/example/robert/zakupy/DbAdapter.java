@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import com.example.robert.zakupy.model.Category;
+import com.example.robert.zakupy.model.CurrentProducts;
 import com.example.robert.zakupy.model.Product;
 
 /**
@@ -190,7 +191,38 @@ public class DbAdapter {
         return db.query("Product", columns, null, null, null, null, orderBy);
     }
 
+    public long insertCurrentProduct(int productId, String amount) {
+        ContentValues newCategoryValues = new ContentValues();
+        newCategoryValues.put("id_product", productId);
+        newCategoryValues.put("amount", amount);
+        return db.insert("CurrentProducts", null, newCategoryValues);
+    }
 
+    public CurrentProducts getCurrentProductById(int productId) {
+        String[] columns = {"id", "id_product", "amount", "is_completed"};
+        String where = "id_product" + "=" + productId;
+        Cursor cursor = db.query("CurrentProducts", columns, where, null, null, null, null);
+        CurrentProducts currentProduct = null;
+        if(cursor != null && cursor.moveToFirst()) {
+           int id = cursor.getInt(0);
+            int id_product = cursor.getInt(1);
+            String amount = cursor.getString(2);
+            int is_completedInt = cursor.getInt(3);
+            boolean is_completed = (is_completedInt != 0);
+            currentProduct = new CurrentProducts(id, id_product, amount, is_completed);
+        }
+        return currentProduct;
+    }
+
+    public boolean deleteCurrentProductTmp(int id){
+        String where = "id" + "!=" + id;
+        return db.delete("CurrentProducts", where, null) > 0;
+    }
+
+    public boolean deleteCurrentProduct(int productId){
+        String where = "id_product" + "=" + productId;
+        return db.delete("CurrentProducts", where, null) > 0;
+    }
 }
 
 

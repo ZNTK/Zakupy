@@ -26,12 +26,13 @@ public class MainActivity extends AppCompatActivity {
         Context context = getApplicationContext();
         DbAdapter adapter = new DbAdapter(context);
         adapter.open();
-        adapter.insertProduct("Chleb", 1, "szt.");
-        adapter.insertProduct("Pomidor", 1, "szt.");
-       adapter.insertProduct("Wpierdol", 1, "[kg]");
-        adapter.insertProduct("Ogorek", 1, "szt.");
-        adapter.insertProduct("Szylook", 1, "szt.");
-       // adapter.insertCategory(1, "Ogólne");
+       // adapter.deleteProductTmp(1);
+//        adapter.insertProduct("Chleb", 1, "szt.");
+//        adapter.insertProduct("Pomidor", 1, "szt.");
+//       adapter.insertProduct("Wpierdol", 2, "[kg]");
+//        adapter.insertProduct("Ogorek", 2, "szt.");
+//        adapter.insertProduct("Szylook", 1, "szt.");
+        adapter.deleteCurrentProductTmp(256);
         adapter.close();
         Log.d("GIT", "Wykonano!");
 
