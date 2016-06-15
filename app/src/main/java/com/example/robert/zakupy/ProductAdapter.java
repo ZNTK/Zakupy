@@ -1,6 +1,7 @@
 package com.example.robert.zakupy;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,11 +9,13 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.ImageButton;
+import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
 
 import com.example.robert.zakupy.model.Category;
+import com.example.robert.zakupy.model.CurrentProducts;
 import com.example.robert.zakupy.model.Product;
 
 import java.util.ArrayList;
@@ -34,7 +37,8 @@ public class ProductAdapter extends ArrayAdapter<Product> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View rowView = inflater.inflate(resourceID, parent, false);
+
+
         if(convertView == null)
             convertView = inflater.inflate(R.layout.row_product, null);
         final Product product = getItem(position);
@@ -83,14 +87,29 @@ public class ProductAdapter extends ArrayAdapter<Product> {
             }
         });
 
-//        cbCompleted.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Log.d("BUTTON", "Wykonano!");
-//            }
-//        });
+
+
+
+
+        if(checkIfProductIsInCurrentProducts(product.id, finalConvertView) == true)
+            convertView.setBackgroundColor(Color.parseColor("#00FF00"));
+        else convertView.setBackgroundColor(Color.parseColor("#FFFFFF"));
+
 
         return convertView;
+    }
+
+    public boolean checkIfProductIsInCurrentProducts(int productId, View view)
+    {
+        Context context = view.getContext();
+        DbAdapter adapter = new DbAdapter(context);
+        adapter.open();
+        CurrentProducts currentProduct = adapter.getCurrentProductById(productId);
+        adapter.close();
+
+        if(currentProduct == null)
+            return false;
+        else return true;
     }
 
 
