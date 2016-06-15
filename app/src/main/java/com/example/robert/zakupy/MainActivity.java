@@ -17,22 +17,26 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     ListView listViewProducts;
+    ListView listViewCurrentProducts;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         listViewProducts = (ListView) findViewById(R.id.listViewProducts);
+        listViewCurrentProducts = (ListView) findViewById(R.id.listViewCurrentProducts);
 
         Context context = getApplicationContext();
         DbAdapter adapter = new DbAdapter(context);
         adapter.open();
+        adapter.insertCurrentProduct(1,"duzo");
+        adapter.insertCurrentProduct(2,"mlao");
        // adapter.deleteProductTmp(1);
 //        adapter.insertProduct("Chleb", 1, "szt.");
 //        adapter.insertProduct("Pomidor", 1, "szt.");
 //       adapter.insertProduct("Wpierdol", 2, "[kg]");
 //        adapter.insertProduct("Ogorek", 2, "szt.");
 //        adapter.insertProduct("Szylook", 1, "szt.");
-        adapter.deleteCurrentProductTmp(256);
+        //adapter.deleteCurrentProductTmp(256);
         adapter.close();
         Log.d("GIT", "Wykonano!");
 
