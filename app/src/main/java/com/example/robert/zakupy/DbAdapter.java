@@ -223,6 +223,12 @@ public class DbAdapter {
         String where = "id_product" + "=" + productId;
         return db.delete("CurrentProducts", where, null) > 0;
     }
+
+    public boolean deleteCategoryTmp(int id){
+        String where = "id" + "!=" + id;
+        return db.delete("Category", where, null) > 0;
+    }
+
 }
 
 

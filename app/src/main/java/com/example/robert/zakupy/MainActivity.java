@@ -33,6 +33,13 @@ public class MainActivity extends AppCompatActivity {
 //        adapter.insertProduct("Ogorek", 2, "szt.");
 //        adapter.insertProduct("Szylook", 1, "szt.");
         adapter.deleteCurrentProductTmp(256);
+        adapter.deleteCategoryTmp(256);
+        adapter.insertCategory(1, "Ogólne");
+        adapter.insertCategory(2, "Chemia");
+        adapter.insertCategory(3, "Warzywniak");
+        adapter.insertCategory(4, "Odzież");
+        adapter.insertCategory(5, "Elektronika");
+        adapter.insertCategory(6, "Apteka");
         adapter.close();
         Log.d("GIT", "Wykonano!");
 
