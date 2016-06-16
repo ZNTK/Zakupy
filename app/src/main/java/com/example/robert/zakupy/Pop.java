@@ -57,7 +57,7 @@ public class Pop extends Activity{
                 DbAdapter adapter = new DbAdapter(context);
                 adapter.open();
 
-                long productid = adapter.insertProduct(nazwa, 1, jednostki);
+                long productid = adapter.insertProduct(nazwa, 5, jednostki);
 
 
                 adapter.insertCurrentProduct((int) productid, ilosc);
