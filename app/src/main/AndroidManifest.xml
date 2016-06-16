@@ -25,7 +25,8 @@
         <activity
             android:name=".Pop"
             android:theme="@style/AppTheme.PopupTheme" />
-
+<activity android:name=".PopIlosc"
+    android:theme="@style/AppTheme.PopupTheme"></activity>
     </application>
 
 </manifest>

@@ -139,6 +139,13 @@ public class DbAdapter {
         return  db.update("CurrentProducts",updatatecurrprod,where,null)>0;
     }
 
+    public  boolean updateCurrentProductAmount(int id, String amount){
+        String where = "id" + "=" + id;
+        ContentValues updatatecurrprod = new ContentValues();
+        updatatecurrprod.put("amount",amount);
+        return  db.update("CurrentProducts",updatatecurrprod,where,null)>0;
+    }
+
     public boolean deleteProduct(int id){
         String where = "id" + "=" + id;
         return db.delete("Product", where, null) > 0;

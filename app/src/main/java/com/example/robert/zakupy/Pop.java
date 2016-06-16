@@ -62,6 +62,7 @@ public class Pop extends Activity{
 
                 adapter.insertCurrentProduct((int) productid, ilosc);
 
+                adapter.close();
                 Intent returnIntent = new Intent();
                 returnIntent.putExtra("result", "dodano produkt");
                 setResult(Activity.RESULT_OK, returnIntent);

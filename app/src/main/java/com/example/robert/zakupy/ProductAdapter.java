@@ -84,6 +84,7 @@ public class ProductAdapter extends ArrayAdapter<Product> {
 
 
 
+
         if(checkIfProductIsInCurrentProducts(product.id, finalConvertView) == true)
             convertView.setBackgroundColor(Color.parseColor("#00FF00"));
         else convertView.setBackgroundColor(Color.parseColor("#FFFFFF"));

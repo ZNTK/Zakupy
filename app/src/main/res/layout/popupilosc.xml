@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="#a2e1fb">
+
+    <Button
+        android:layout_width="120dp"
+        android:layout_height="60dp"
+        android:text="Ustaw"
+        android:id="@+id/btn_ustawIlosc"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:id="@+id/editTextIloscpPop"
+        android:layout_above="@+id/btn_ustawIlosc"
+        android:layout_centerHorizontal="true"
+        android:textAlignment="center"
+        android:numeric="signed|integer|decimal" />
+</RelativeLayout>

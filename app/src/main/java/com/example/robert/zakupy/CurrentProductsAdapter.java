@@ -1,8 +1,10 @@
 package com.example.robert.zakupy;
 
 
+import android.app.Activity;
 import android.content.Context;
 
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,11 +25,13 @@ import java.util.ArrayList;
 public class CurrentProductsAdapter extends ArrayAdapter<CurrentProducts> {
     private final Context context;
     private final int resourceID;
+    private Activity activitylist;
 
-    public  CurrentProductsAdapter(Context context, int resource, ArrayList<CurrentProducts> bah){
+    public  CurrentProductsAdapter(Activity activitylist, Context context, int resource, ArrayList<CurrentProducts> bah){
         super(context, resource, bah);
         this.context = context;
         this.resourceID = resource;
+        this.activitylist = activitylist;
     }
 
     @Override
@@ -45,7 +49,7 @@ public class CurrentProductsAdapter extends ArrayAdapter<CurrentProducts> {
         CheckBox tvCzykupione = (CheckBox) convertView.findViewById(R.id.radiobutonczykupine);
 
         final View finalConvertView = convertView;
-        Context context = finalConvertView.getContext();
+        final Context context = finalConvertView.getContext();
         final DbAdapter adapter = new DbAdapter(context);
 
         adapter.open();
@@ -59,6 +63,9 @@ public class CurrentProductsAdapter extends ArrayAdapter<CurrentProducts> {
         tvIlosc.setText(currprod.amount);
         tvCzykupione.setChecked(currprod.is_completed);
 
+
+
+
         tvCzykupione.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -66,11 +73,24 @@ public class CurrentProductsAdapter extends ArrayAdapter<CurrentProducts> {
                 adapter.open();
                 adapter.updateCurrentProductCheck(currprod.id, isChecked);
                 adapter.close();
+
             }
         });
 
 
 
+
+        tvIlosc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               // context.startActivity(new Intent(activitylist,PopIlosc.class));
+                Intent newactivity = new Intent(activitylist,PopIlosc.class);
+                newactivity.putExtra("id",currprod.id);
+
+                ((Activity) context).startActivityForResult(newactivity, 1);
+
+            }
+        });
 
 
 
