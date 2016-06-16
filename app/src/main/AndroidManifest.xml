@@ -19,12 +19,13 @@
             android:name=".ProductsActivity"
             android:label="@string/title_activity_products"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ListActivity" />
+        <activity android:name=".ListActivity"
+            android:windowSoftInputMode="adjustPan"
+            />
         <activity
             android:name=".Pop"
             android:theme="@style/AppTheme.PopupTheme" />
-        <activity android:name=".CurrentProductsAdapter" >
-        </activity>
+
     </application>
 
 </manifest>

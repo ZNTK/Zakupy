@@ -11,23 +11,23 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:text="idproduku" />
+        android:text="idproduku"
+        android:layout_toLeftOf="@+id/editTextIlosc"
+        android:layout_toStartOf="@+id/editTextIlosc" />
 
     <EditText
         android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:id="@+id/editTextIlosc"
         android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/textViewIdOnCurrent"
-        android:layout_toEndOf="@+id/textViewIdOnCurrent" />
+        android:layout_toLeftOf="@+id/radiobutonczykupine"
+        />
 
     <RadioButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="kupione"
         android:id="@+id/radiobutonczykupine"
         android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/editTextIlosc"
         android:checked="false"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />

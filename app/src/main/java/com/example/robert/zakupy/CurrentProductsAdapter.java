@@ -12,6 +12,7 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 
 import com.example.robert.zakupy.model.CurrentProducts;
+import com.example.robert.zakupy.model.Product;
 
 import java.util.ArrayList;
 
@@ -31,7 +32,7 @@ public class CurrentProductsAdapter extends ArrayAdapter<CurrentProducts> {
 
 
         if (convertView == null)
-            convertView = inflater.inflate(R.layout.activity_current_products_adapter, null);
+            convertView = inflater.inflate(R.layout.row_current_products, null);
         final CurrentProducts currprod = getItem(position);
 
         TextView tvName = (TextView) convertView.findViewById(R.id.textViewIdOnCurrent);
@@ -42,7 +43,14 @@ public class CurrentProductsAdapter extends ArrayAdapter<CurrentProducts> {
         Context context = finalConvertView.getContext();
         DbAdapter adapter = new DbAdapter(context);
 
-        tvName.setText(Integer.toString(currprod.id_product));
+        adapter.open();
+
+
+        Product produkt = adapter.getProductById(currprod.id_product);
+
+        adapter.close();
+
+        tvName.setText(produkt.name);
         tvIlosc.setText("1");
         tvCzykupione.setChecked(currprod.is_completed);
 

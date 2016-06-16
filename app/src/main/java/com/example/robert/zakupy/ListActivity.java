@@ -56,7 +56,7 @@ public class ListActivity extends Activity {
             CurrentProducts currprod = adapter.getCurrentProductByRealId(currentproductid);
             todoTaskList.add(currprod);
         }
-        ListAdapter myAdapter = new CurrentProductsAdapter(this, R.layout.activity_current_products_adapter, todoTaskList);
+        ListAdapter myAdapter = new CurrentProductsAdapter(this, R.layout.row_current_products, todoTaskList);
         listViewCurrentProducts.setAdapter(myAdapter);
         adapter.close();
     }
