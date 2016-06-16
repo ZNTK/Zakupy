@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
 //       adapter.insertProduct("Wpierdol", 2, "[kg]");
 //        adapter.insertProduct("Ogorek", 2, "szt.");
 //        adapter.insertProduct("Szylook", 1, "szt.");
-        //adapter.deleteCurrentProductTmp(256);
+        adapter.deleteCurrentProductTmp(256);
         adapter.close();
         Log.d("GIT", "Wykonano!");
 

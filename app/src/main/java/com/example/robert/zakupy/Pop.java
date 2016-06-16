@@ -1,8 +1,12 @@
 package com.example.robert.zakupy;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -15,6 +19,7 @@ public class Pop extends Activity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
         setContentView(R.layout.popupquickadd);
 
         DisplayMetrics dm = new DisplayMetrics();
@@ -25,7 +30,8 @@ public class Pop extends Activity{
 
         getWindow().setLayout((int)(width*.9),(int)(height*.45));
 
-        EditText editTextJednostka = (EditText) findViewById(R.id.editTextJednostka);
+        final EditText editTextNazwa = (EditText) findViewById(R.id.editTextNazwa);
+        final EditText editTextJednostka = (EditText) findViewById(R.id.editTextJednostka);
         EditText editTextIlosc = (EditText) findViewById(R.id.editTextIlosc);
 
         TextView textViewJednostka = (TextView) findViewById(R.id.textViewJednostka);
@@ -37,6 +43,33 @@ public class Pop extends Activity{
         textViewJednostka.setWidth((int)(width*.45));
 
 
+        Button AddToProduct = (Button) findViewById(R.id.btnDodajDoListyZakupow);
+
+        AddToProduct.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String nazwa = String.valueOf(editTextNazwa.getText());
+                String jednostki = String.valueOf(editTextJednostka.getText());
+
+                Context context = getApplicationContext();
+                DbAdapter adapter = new DbAdapter(context);
+                adapter.open();
+
+                long productid = adapter.insertProduct(nazwa,1,jednostki);
+
+
+                adapter.insertCurrentProduct((int)productid,"");
+
+                Intent returnIntent = new Intent();
+                returnIntent.putExtra("result","dodano produkt");
+                setResult(Activity.RESULT_OK,returnIntent);
+
+
+
+                finish();
+            }
+        });
 
     }
 }

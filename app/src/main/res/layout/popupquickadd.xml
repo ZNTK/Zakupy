@@ -82,5 +82,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignRight="@+id/editTextJednostka"
-        android:layout_alignEnd="@+id/editTextJednostka" />
+        android:layout_alignEnd="@+id/editTextJednostka"
+        android:onClick="btnDodajDoListyZakupow_onClick"
+        />
 </RelativeLayout>
