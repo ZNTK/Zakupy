@@ -64,7 +64,7 @@ public class ProductAdapter extends ArrayAdapter<Product> {
             tvCategory.setText(category.name);
         else tvCategory.setText("");
 
-        tvUnit.setText(product.unit);
+        tvUnit.setText("[" + product.unit + "]");
 
         btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,15 +75,8 @@ public class ProductAdapter extends ArrayAdapter<Product> {
                 adapter.deleteProduct(product.id);
                 adapter.close();
 
-                String orderBy = "Name";
-                //     radioButtonCategory = (RadioButton) ((ProductsActivity) context).findViewById(R.id.radioButtonCategory); // tutaj sie wywala po usunieciu
-                //     if(radioButtonCategory.isSelected())
-                //         orderBy = "Category";
-
-
                 if(context instanceof ProductsActivity)
-                    ((ProductsActivity) context).refreshProductList(orderBy);
-                else  Log.d("cxxx", "cos nie tak!");
+                    ((ProductsActivity) context).refreshProductList("");
             }
         });
 

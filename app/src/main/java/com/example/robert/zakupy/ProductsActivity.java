@@ -12,15 +12,19 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.RadioButton;
+import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.robert.zakupy.model.CurrentProducts;
 import com.example.robert.zakupy.model.Product;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ProductsActivity extends AppCompatActivity {
     ListView listViewProducts;
@@ -69,14 +73,50 @@ public class ProductsActivity extends AppCompatActivity {
 
         listViewProducts_DataBind("Name");
 
+        TextView tvUnit =  (TextView) findViewById(R.id.editTextNewProductUnit);
+        tvUnit.setText("szt.");
 
+        RadioButton radioButtonName = (RadioButton) findViewById(R.id.radioButtonName);
+        radioButtonName.setChecked(true);
+
+        Spinner spinnerCategory =  (Spinner) findViewById(R.id.spinnerCategory);
+        ArrayAdapter<String> adapter;
+        List<String> list;
+
+        list = new ArrayList<String>();
+        list.add("Ogólne");
+        list.add("Chemia");
+        list.add("Warzywniak");
+        list.add("Odzież");
+        list.add("Elektronika");
+        list.add("Apteka");
+        adapter = new ArrayAdapter<String>(getApplicationContext(),
+                R.layout.spinner_item_category, list);
+        //adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
+        spinnerCategory.setAdapter(adapter);
 
     }
 
 
     public void refreshProductList(String orderBy)
     {
-        Log.d("GIT", "redjo baton!");
+        if(orderBy == "")
+        {
+            RadioButton radioButtonName = (RadioButton) findViewById(R.id.radioButtonName);
+            RadioButton radioButtonCategory = (RadioButton) findViewById(R.id.radioButtonCategory);
+
+            if(radioButtonName.isChecked())
+            {
+                orderBy = "Name";
+            }
+            if(radioButtonCategory.isChecked())
+            {
+                orderBy = "id_category";
+            }
+        }
+
+
+
         listViewProducts.setAdapter(null);
         listViewProducts_DataBind(orderBy);
     }
@@ -134,6 +174,44 @@ public class ProductsActivity extends AppCompatActivity {
         if(currentProduct == null)
             return false;
         else return true;
+    }
+
+    public void btnAddProduct_onClick(View view)
+    {
+        TextView tvName =  (TextView) findViewById(R.id.editTextNewProductName);
+        TextView tvUnit =  (TextView) findViewById(R.id.editTextNewProductUnit);
+
+        String productName = (String) tvName.getText().toString();
+        if(productName.replace(" ","") == "" || productName == null)
+            Toast.makeText(ProductsActivity.this, "Podaj nazwę produktu!", Toast.LENGTH_SHORT).show();
+
+        else
+        {
+            int categoryId = 1;
+            Spinner spinnerCategory =  (Spinner) findViewById(R.id.spinnerCategory);
+            String categoryName = (String)spinnerCategory.getSelectedItem();
+            if(categoryName == "Chemia")
+                categoryId = 2;
+            if(categoryName == "Warzywniak")
+                categoryId = 3;
+            if(categoryName == "Odzież")
+                categoryId = 4;
+            if(categoryName == "Elektronika")
+                categoryId = 5;
+            if(categoryName == "Apteka")
+                categoryId = 6;
+
+            Context context = view.getContext();
+            DbAdapter adapter = new DbAdapter(context);
+            adapter.open();
+            adapter.insertProduct(tvName.getText().toString(), categoryId, tvUnit.getText().toString());
+            adapter.close();
+            refreshProductList("");
+            tvName.setText("");
+
+            Toast.makeText(ProductsActivity.this, "Dodano " + productName + " do bazy produktów", Toast.LENGTH_SHORT).show();
+        }
+
     }
 
 
