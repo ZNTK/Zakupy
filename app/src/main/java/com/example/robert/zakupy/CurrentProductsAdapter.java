@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.TextView;
@@ -37,7 +38,7 @@ public class CurrentProductsAdapter extends ArrayAdapter<CurrentProducts> {
 
         TextView tvName = (TextView) convertView.findViewById(R.id.textViewIdOnCurrent);
         EditText tvIlosc = (EditText) convertView.findViewById(R.id.editTextIlosc);
-        RadioButton tvCzykupione = (RadioButton) convertView.findViewById(R.id.radiobutonczykupine);
+        CheckBox tvCzykupione = (CheckBox) convertView.findViewById(R.id.radiobutonczykupine);
 
         final View finalConvertView = convertView;
         Context context = finalConvertView.getContext();
@@ -51,7 +52,7 @@ public class CurrentProductsAdapter extends ArrayAdapter<CurrentProducts> {
         adapter.close();
 
         tvName.setText(produkt.name);
-        tvIlosc.setText("1");
+        tvIlosc.setText(currprod.amount);
         tvCzykupione.setChecked(currprod.is_completed);
 
         return convertView;

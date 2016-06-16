@@ -1,4 +1,4 @@
-﻿package com.example.robert.zakupy;
+package com.example.robert.zakupy;
 
 import android.content.Context;
 import android.content.Intent;

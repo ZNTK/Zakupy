@@ -138,7 +138,7 @@
           android:layout_weight="1"
           android:text="Przejdź do zakupów"
           android:background="@color/colorPrimaryDark"
-
+android:onClick="btngotozakupy_OnClick"
           android:textColor="@color/white"/>
     </LinearLayout>
 </LinearLayout>

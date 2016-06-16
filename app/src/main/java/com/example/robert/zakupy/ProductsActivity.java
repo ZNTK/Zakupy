@@ -2,6 +2,7 @@ package com.example.robert.zakupy;
 
 import android.content.ClipData;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -36,6 +37,8 @@ public class ProductsActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         listViewProducts = (ListView) findViewById(R.id.listViewProducts);
+
+
 
         AdapterView.OnItemClickListener myListViewClicked = new AdapterView.OnItemClickListener() {
 
@@ -214,7 +217,12 @@ public class ProductsActivity extends AppCompatActivity {
 
     }
 
+    public void btngotozakupy_OnClick(View view)
+    {
+        Intent i = new Intent(this, ListActivity.class);
+        startActivity(i);
 
+    }
 }
 
 

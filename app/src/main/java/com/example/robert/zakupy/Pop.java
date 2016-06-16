@@ -32,7 +32,7 @@ public class Pop extends Activity{
 
         final EditText editTextNazwa = (EditText) findViewById(R.id.editTextNazwa);
         final EditText editTextJednostka = (EditText) findViewById(R.id.editTextJednostka);
-        EditText editTextIlosc = (EditText) findViewById(R.id.editTextIlosc);
+        final EditText editTextIlosc = (EditText) findViewById(R.id.editTextIlosc);
 
         TextView textViewJednostka = (TextView) findViewById(R.id.textViewJednostka);
         TextView textViewIlosc = (TextView) findViewById(R.id.textViewIlosc);
@@ -51,20 +51,20 @@ public class Pop extends Activity{
 
                 String nazwa = String.valueOf(editTextNazwa.getText());
                 String jednostki = String.valueOf(editTextJednostka.getText());
+                String ilosc = String.valueOf(editTextIlosc.getText());
 
                 Context context = getApplicationContext();
                 DbAdapter adapter = new DbAdapter(context);
                 adapter.open();
 
-                long productid = adapter.insertProduct(nazwa,1,jednostki);
+                long productid = adapter.insertProduct(nazwa, 1, jednostki);
 
 
-                adapter.insertCurrentProduct((int)productid,"");
+                adapter.insertCurrentProduct((int) productid, ilosc);
 
                 Intent returnIntent = new Intent();
-                returnIntent.putExtra("result","dodano produkt");
-                setResult(Activity.RESULT_OK,returnIntent);
-
+                returnIntent.putExtra("result", "dodano produkt");
+                setResult(Activity.RESULT_OK, returnIntent);
 
 
                 finish();
