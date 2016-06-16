@@ -47,6 +47,7 @@ public class CurrentProductsAdapter extends ArrayAdapter<CurrentProducts> {
         TextView tvName = (TextView) convertView.findViewById(R.id.textViewIdOnCurrent);
         EditText tvIlosc = (EditText) convertView.findViewById(R.id.editTextIlosc);
         CheckBox tvCzykupione = (CheckBox) convertView.findViewById(R.id.radiobutonczykupine);
+        TextView tvJednostka = (TextView) convertView.findViewById(R.id.textViewJednostkanaliscie);
 
         final View finalConvertView = convertView;
         final Context context = finalConvertView.getContext();
@@ -62,6 +63,7 @@ public class CurrentProductsAdapter extends ArrayAdapter<CurrentProducts> {
         tvName.setText(produkt.name);
         tvIlosc.setText(currprod.amount);
         tvCzykupione.setChecked(currprod.is_completed);
+        tvJednostka.setText(produkt.unit);
 
 
 
