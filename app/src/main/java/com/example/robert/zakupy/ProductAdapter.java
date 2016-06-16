@@ -64,7 +64,7 @@ public class ProductAdapter extends ArrayAdapter<Product> {
             tvCategory.setText(category.name);
         else tvCategory.setText("");
 
-        tvUnit.setText("[" + product.unit + "]");
+        tvUnit.setText(" [" + product.unit + "]");
 
         btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override

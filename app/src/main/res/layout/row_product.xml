@@ -27,7 +27,6 @@
         android:padding="1dip"
         android:textSize="100px"
         android:text="Usuń"
-        android:onClick="buttonDelete_OnClick"
 
 
         android:src="@android:drawable/ic_menu_delete"

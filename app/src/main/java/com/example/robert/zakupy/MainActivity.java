@@ -23,25 +23,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         listViewProducts = (ListView) findViewById(R.id.listViewProducts);
 
-        Context context = getApplicationContext();
-        DbAdapter adapter = new DbAdapter(context);
-        adapter.open();
-       // adapter.deleteProductTmp(1);
-//        adapter.insertProduct("Chleb", 1, "szt.");
-//        adapter.insertProduct("Pomidor", 1, "szt.");
-//       adapter.insertProduct("Wpierdol", 2, "[kg]");
-//        adapter.insertProduct("Ogorek", 2, "szt.");
-//        adapter.insertProduct("Szylook", 1, "szt.");
-        adapter.deleteCurrentProductTmp(256);
-        adapter.deleteCategoryTmp(256);
-        adapter.insertCategory(1, "Ogólne");
-        adapter.insertCategory(2, "Chemia");
-        adapter.insertCategory(3, "Warzywniak");
-        adapter.insertCategory(4, "Odzież");
-        adapter.insertCategory(5, "Elektronika");
-        adapter.insertCategory(6, "Apteka");
-        adapter.close();
-        Log.d("GIT", "Wykonano!");
+        insertSystemData();
 
 
     }
@@ -53,34 +35,49 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-//    public void clearProductList()
-//    {
-//        listViewProducts.setAdapter(null);
-//
-//    }
+    public void insertSystemData()
+    {
+        Context context = getApplicationContext();
+        DbAdapter adapter = new DbAdapter(context);
+        adapter.open();
+        adapter.deleteProductTmp(1);
+        adapter.deleteCurrentProductTmp(256);
+        adapter.deleteCategoryTmp(256);
 
-//    public void listViewProducts_DataBind(String orderBy)
-//    {
-//        Context context = getApplicationContext();
-//        DbAdapter adapter = new DbAdapter(context);
-//        adapter.open();
-//        ArrayList<Product> todoTaskList;
-//        todoTaskList = new ArrayList<>();
-//
-//        Cursor c;
-//        if(orderBy == "")
-//            c = adapter.getAllProducts();
-//        else c = adapter.getAllProductsOrderBy(orderBy);
-//        while(c.moveToNext()) {
-//            int productId = Integer.parseInt(c.getString(0));
-//            Product product = adapter.getProductById(productId);
-//            todoTaskList.add(product);
-//
-//        }
-//        ListAdapter myAdapter = new ProductAdapter(this, R.layout.row_product, todoTaskList);
-//        listViewProducts.setAdapter(myAdapter);
-//        adapter.close();
-//    }
+        adapter.insertCategory(1, "Apteka");
+        adapter.insertCategory(2, "Elektronika");
+        adapter.insertCategory(3, "Chemia");
+        adapter.insertCategory(4, "Odzież");
+        adapter.insertCategory(5, "Ogólne");
+        adapter.insertCategory(6, "Warzywniak");
+
+        adapter.insertProduct("Apap", 1, "op.");
+        adapter.insertProduct("Pawulon", 1, "op.");
+        adapter.insertProduct("Metanabol", 1, "mg");
+
+        adapter.insertProduct("Telewizor", 2, "szt.");
+        adapter.insertProduct("Słuchawki", 2, "szt.");
+        adapter.insertProduct("Bateria", 2, "szt.");
+
+        adapter.insertProduct("Mydło", 3, "szt.");
+        adapter.insertProduct("Proszek do prania", 3, "kg");
+        adapter.insertProduct("Płyn do naczyń", 3, "L");
+
+        adapter.insertProduct("Czapka", 4, "szt.");
+        adapter.insertProduct("Buty", 4, "szt.");
+        adapter.insertProduct("Kurtka", 4, "szt.");
+
+        adapter.insertProduct("Serek wiejski", 5, "szt.");
+        adapter.insertProduct("Pierś z kury", 5, "szt.");
+        adapter.insertProduct("Ryż", 5, "kg");
+
+        adapter.insertProduct("Ogórek", 6, "szt.");
+        adapter.insertProduct("Ziemniaki", 6, "kg");
+        adapter.insertProduct("Papryka", 6, "szt.");
+
+        adapter.close();
+
+    }
 
 
 }

@@ -182,23 +182,23 @@ public class ProductsActivity extends AppCompatActivity {
         TextView tvUnit =  (TextView) findViewById(R.id.editTextNewProductUnit);
 
         String productName = (String) tvName.getText().toString();
-        if(productName.replace(" ","") == "" || productName == null)
+        if(productName.replace(" ","") == "" || productName == null || productName.isEmpty())
             Toast.makeText(ProductsActivity.this, "Podaj nazwę produktu!", Toast.LENGTH_SHORT).show();
 
         else
         {
-            int categoryId = 1;
+            int categoryId = 5;
             Spinner spinnerCategory =  (Spinner) findViewById(R.id.spinnerCategory);
             String categoryName = (String)spinnerCategory.getSelectedItem();
-            if(categoryName == "Chemia")
+            if(categoryName == "Apteka")
+                categoryId = 1;
+            if(categoryName == "Elektronika")
                 categoryId = 2;
-            if(categoryName == "Warzywniak")
+            if(categoryName == "Chemia")
                 categoryId = 3;
             if(categoryName == "Odzież")
                 categoryId = 4;
-            if(categoryName == "Elektronika")
-                categoryId = 5;
-            if(categoryName == "Apteka")
+            if(categoryName == "Warzywniak")
                 categoryId = 6;
 
             Context context = view.getContext();
