@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+<<<<<<< HEAD
     public void insertSystemData()
     {
         Context context = getApplicationContext();
@@ -78,6 +79,43 @@ public class MainActivity extends AppCompatActivity {
         adapter.close();
 
     }
+=======
+    public void btnList_onClick(View view)
+    {
+        Intent i = new Intent(this, ListActivity.class);
+        startActivity(i);
+
+    }
+
+//    public void clearProductList()
+//    {
+//        listViewProducts.setAdapter(null);
+//
+//    }
+
+//    public void listViewProducts_DataBind(String orderBy)
+//    {
+//        Context context = getApplicationContext();
+//        DbAdapter adapter = new DbAdapter(context);
+//        adapter.open();
+//        ArrayList<Product> todoTaskList;
+//        todoTaskList = new ArrayList<>();
+//
+//        Cursor c;
+//        if(orderBy == "")
+//            c = adapter.getAllProducts();
+//        else c = adapter.getAllProductsOrderBy(orderBy);
+//        while(c.moveToNext()) {
+//            int productId = Integer.parseInt(c.getString(0));
+//            Product product = adapter.getProductById(productId);
+//            todoTaskList.add(product);
+//
+//        }
+//        ListAdapter myAdapter = new ProductAdapter(this, R.layout.row_product, todoTaskList);
+//        listViewProducts.setAdapter(myAdapter);
+//        adapter.close();
+//    }
+>>>>>>> d65c64888ca180ad0c7675df8ca5693cfeedad7a
 
 
 }
