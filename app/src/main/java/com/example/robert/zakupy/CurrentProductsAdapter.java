@@ -3,14 +3,17 @@ package com.example.robert.zakupy;
 
 import android.content.Context;
 
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.robert.zakupy.model.CurrentProducts;
 import com.example.robert.zakupy.model.Product;
@@ -29,6 +32,7 @@ public class CurrentProductsAdapter extends ArrayAdapter<CurrentProducts> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
 
@@ -42,7 +46,7 @@ public class CurrentProductsAdapter extends ArrayAdapter<CurrentProducts> {
 
         final View finalConvertView = convertView;
         Context context = finalConvertView.getContext();
-        DbAdapter adapter = new DbAdapter(context);
+        final DbAdapter adapter = new DbAdapter(context);
 
         adapter.open();
 
@@ -55,7 +59,25 @@ public class CurrentProductsAdapter extends ArrayAdapter<CurrentProducts> {
         tvIlosc.setText(currprod.amount);
         tvCzykupione.setChecked(currprod.is_completed);
 
+        tvCzykupione.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+                adapter.open();
+                adapter.updateCurrentProductCheck(currprod.id, isChecked);
+                adapter.close();
+            }
+        });
+
+
+
+
+
+
+
         return convertView;
     }
+
+
 }
 

@@ -131,6 +131,14 @@ public class DbAdapter {
 //        return db.update(DB_TODO_TABLE, updateTodoValues, where, null) > 0;
 //    }
 //
+    public  boolean updateCurrentProductCheck(int id, boolean is_completed){
+        String where = "id" + "=" + id;
+        int completed = is_completed ? 1:0;
+        ContentValues updatatecurrprod = new ContentValues();
+        updatatecurrprod.put("is_completed",is_completed);
+        return  db.update("CurrentProducts",updatatecurrprod,where,null)>0;
+    }
+
     public boolean deleteProduct(int id){
         String where = "id" + "=" + id;
         return db.delete("Product", where, null) > 0;

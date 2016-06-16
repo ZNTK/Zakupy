@@ -28,6 +28,7 @@
             android:id="@+id/listViewCurrentProducts"
             android:layout_weight="0.88"
             android:descendantFocusability="beforeDescendants"
+
             />
 
         <Button
