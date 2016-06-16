@@ -229,6 +229,26 @@ public class DbAdapter {
         return db.delete("Category", where, null) > 0;
     }
 
+    public Cursor getAllCurrentProducts() {
+        String[] columns = {"id", "id_product", "amount", "is_completed"};
+        return db.query("CurrentProducts", columns, null, null, null, null, null);
+    }
+
+    public CurrentProducts getCurrentProductByRealId(int Id) {
+        String[] columns = {"id", "id_product", "amount", "is_completed"};
+        String where = "id" + "=" + Id;
+        Cursor cursor = db.query("CurrentProducts", columns, where, null, null, null, null);
+        CurrentProducts currentProduct = null;
+        if(cursor != null && cursor.moveToFirst()) {
+            int id = cursor.getInt(0);
+            int id_product = cursor.getInt(1);
+            String amount = cursor.getString(2);
+            int is_completedInt = cursor.getInt(3);
+            boolean is_completed = (is_completedInt != 0);
+            currentProduct = new CurrentProducts(id, id_product, amount, is_completed);
+        }
+        return currentProduct;
+    }
 }
 
 

@@ -1,4 +1,4 @@
-package com.example.robert.zakupy;
+﻿package com.example.robert.zakupy;
 
 import android.content.Context;
 import android.content.Intent;
@@ -17,13 +17,17 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     ListView listViewProducts;
+    ListView listViewCurrentProducts;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         listViewProducts = (ListView) findViewById(R.id.listViewProducts);
+        listViewCurrentProducts = (ListView) findViewById(R.id.listViewCurrentProducts);
+
 
         insertSystemData();
+
 
 
     }

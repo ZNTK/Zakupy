@@ -16,5 +16,7 @@ public class CurrentProducts {
         this.is_completed = is_completed;
     }
 
+
+
 }
 
