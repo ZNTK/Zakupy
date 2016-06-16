@@ -34,4 +34,6 @@
         android:layout_alignRight="@+id/btnList"
         android:layout_alignEnd="@+id/btnList"
         android:onClick="btnProducts_onClick"/>
+
+
 </RelativeLayout>
